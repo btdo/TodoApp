@@ -5,14 +5,14 @@ import androidx.lifecycle.*
 
 class TodoListViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _todoList = MutableLiveData<List<TodoItem>>().apply {
-
-    }
+    private val _todoList = MutableLiveData<List<TodoItem>>()
     val todoList: LiveData<List<TodoItem>>
         get() = _todoList
 
     init {
         _todoList.value =   mutableListOf<TodoItem>(TodoItem("121","Laundry", false))
+
+
     }
 }
 
