@@ -9,14 +9,14 @@
         android:id="@+id/ListItem"
         android:name="com.wwm.todo.TodoListFragment"
         android:label="@string/todo_list_title"
-        tools:layout="@layout/fragment_todolist">
+        tools:layout="@layout/fragment_todo_list">
 
     </fragment>
     <fragment
         android:id="@+id/AddItem"
-        android:name="com.wwm.todo.AddItemFragment"
+        android:name="com.wwm.todo.AddTodoItemFragment"
         android:label="@string/add_item_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_add_todo">
 
     </fragment>
 </navigation>
