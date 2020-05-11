@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ListItem">
+
+    <fragment
+        android:id="@+id/ListItem"
+        android:name="com.wwm.todo.TodoListFragment"
+        android:label="@string/todo_list_title"
+        tools:layout="@layout/fragment_todolist">
+
+    </fragment>
+    <fragment
+        android:id="@+id/AddItem"
+        android:name="com.wwm.todo.AddItemFragment"
+        android:label="@string/add_item_label"
+        tools:layout="@layout/fragment_second">
+
+    </fragment>
+</navigation>
