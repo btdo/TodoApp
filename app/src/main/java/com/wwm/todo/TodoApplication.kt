@@ -1,14 +1,10 @@
 package com.wwm.todo
 
 import android.app.Application
-import com.amplifyframework.AmplifyException
-import com.amplifyframework.api.aws.AWSApiPlugin
-import com.amplifyframework.core.Amplify
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
-
 
 class TodoApplication : Application() {
 
@@ -23,13 +19,6 @@ class TodoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         delayedInit()
-        try {
-            Amplify.addPlugin(AWSApiPlugin())
-            Amplify.configure(applicationContext)
-            Timber.i("AmplifyGetStarted: Amplify is ready for use!")
-        } catch (configurationFailure: AmplifyException) {
-            Timber.e("AmplifyGetStarted - Failed to configure Amplify - Configuration Failure")
-        }
     }
 
     private fun delayedInit() {

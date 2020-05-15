@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LargeTitleBlack111111">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/colour_dark_grey_111111</item>
+    </style>
+
+    <style name="TitleBlack111111">
+        <item name="android:textSize">22sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">#0d0d0d</item>
+    </style>
+
+    <style name="SectionHeaderWhiteFfffff">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/colour_white_ffffff</item>
+    </style>
+
+    <style name="SectionHeaderBlack111111">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="Subheader1DarkGrey333333Left">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+
+    <style name="Subheader1DarkGrey333333Right">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+
+    <style name="ButtonBlue9Bc2E8Center">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textColor">@color/colour_blue_9_bc_2_e_8</item>
+    </style>
+
+    <style name="ButtonBlue9Bc2E8Left">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textColor">@color/colour_blue_9_bc_2_e_8</item>
+    </style>
+
+    <style name="ButtonDarkGrey666666Left">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/colour_dark_grey_666666</item>
+    </style>
+
+    <style name="ButtonDarkGrey333333Left">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+
+    <style name="BodyHighlightDarkGrey333333Left">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+
+    <style name="Subheader2DarkGrey666666">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_666666</item>
+    </style>
+
+    <style name="ButtonBlue0467C6Left">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textColor">@color/colour_blue_0467_c_6</item>
+    </style>
+
+    <style name="ButtonBlue0467C6Right">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textColor">@color/colour_blue_0467_c_6</item>
+    </style>
+
+    <style name="ButtonWhiteFfffffCenter">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">@color/colour_white_ffffff</item>
+    </style>
+
+    <style name="ButtonBlue0467C6Center">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">@color/colour_blue_0467_c_6</item>
+    </style>
+
+    <style name="ButtonWhiteFfffffLeft">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textColor">@color/colour_white_ffffff</item>
+    </style>
+
+    <style name="Subheader2DarkGrey333333">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+
+    <style name="Body1DarkGrey666666Left">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_666666</item>
+    </style>
+
+    <style name="FormsPlaceholderDarkGrey666666">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_666666</item>
+    </style>
+
+    <style name="ButtonLowercaseBlue0467C6Left">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:textColor">@color/colour_blue_0467_c_6</item>
+    </style>
+
+    <style name="FormsInputDarkGrey333333">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+
+    <style name="Body1DarkGrey333333Left">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+
+    <style name="Body1DarkGrey333333Right">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+
+    <style name="Body1DarkGrey333333Center">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+
+    <style name="FormsLabelDarkGrey666666">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_666666</item>
+    </style>
+
+    <style name="Body2DarkGrey666666Left">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_666666</item>
+    </style>
+
+    <style name="Body2WhiteFfffffLeft">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textColor">@color/colour_white_ffffff</item>
+    </style>
+
+    <style name="FormsHintDescErrorRedCa261ARight">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/colour_red_ca_261_a</item>
+    </style>
+
+    <style name="FormsHintDescErrorDarkGrey666666Right">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/colour_dark_grey_666666</item>
+    </style>
+
+    <style name="FormsHintDescErrorRedCa261ALeft">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/colour_red_ca_261_a</item>
+    </style>
+
+    <style name="FormsHintDescErrorBlue0467C6Left">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/colour_blue_0467_c_6</item>
+    </style>
+
+    <style name="FormsHintDescErrorDarkGrey666666Left">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/colour_dark_grey_666666</item>
+    </style>
+
+    <style name="Body2DarkGrey666666Right">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_666666</item>
+    </style>
+
+    <style name="ButtonLowercaseBlue0467C6Right">
+        <item name="android:gravity">end</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:textColor">@color/colour_blue_0467_c_6</item>
+    </style>
+
+    <style name="ButtonLowercaseBlue0467C6Center">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:letterSpacing">0.03</item>
+        <item name="android:textColor">@color/colour_blue_0467_c_6</item>
+    </style>
+
+    <style name="Body2DarkGrey333333Center">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+
+    <style name="Body2DarkGrey333333Left">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+        <item name="android:textColor">@color/colour_dark_grey_333333</item>
+    </style>
+</resources>

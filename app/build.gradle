@@ -99,10 +99,6 @@ dependencies {
     def material_version = "1.1.0-alpha09"
     implementation "com.google.android.material:material:$material_version"
 
-    // Amplify
-    implementation 'com.amplifyframework:core:0.10.0'
-    implementation 'com.amplifyframework:aws-api:0.10.0'
-
 
     def androidx_test_version = "1.2.0"
     testImplementation 'junit:junit:4.12'

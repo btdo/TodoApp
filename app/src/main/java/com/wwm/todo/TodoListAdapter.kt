@@ -10,7 +10,7 @@ import com.wwm.todo.databinding.ItemTodoBinding
 class TodoListAdapter(
     private var mClickListener: ItemClickedListener
 ) :
-    ListAdapter<TodoItem, TodoListAdapter.ItemViewHolder>(DiffCallback) {
+    ListAdapter<TaskItem, TodoListAdapter.ItemViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
@@ -26,17 +26,17 @@ class TodoListAdapter(
         }
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<TodoItem>() {
+    companion object DiffCallback : DiffUtil.ItemCallback<TaskItem>() {
         override fun areItemsTheSame(
-            oldItem: TodoItem,
-            newItem: TodoItem
+            oldItem: TaskItem,
+            newItem: TaskItem
         ): Boolean {
             return oldItem.title == newItem.title
         }
 
         override fun areContentsTheSame(
-            oldItem: TodoItem,
-            newItem: TodoItem
+            oldItem: TaskItem,
+            newItem: TaskItem
         ): Boolean {
             return oldItem == newItem
         }
@@ -47,13 +47,13 @@ class TodoListAdapter(
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: TodoItem) {
+        fun bind(item: TaskItem) {
             binding.item = item
             binding.executePendingBindings()
         }
     }
 }
 
-class ItemClickedListener(val clickListener: (day: TodoItem) -> Unit) {
-    fun onClick(item: TodoItem) = clickListener(item)
+class ItemClickedListener(val clickListener: (day: TaskItem) -> Unit) {
+    fun onClick(item: TaskItem) = clickListener(item)
 }

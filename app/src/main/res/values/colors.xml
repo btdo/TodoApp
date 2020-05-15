@@ -3,4 +3,30 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+
+    <color name="colour_red_b_32217">#b32217</color>
+    <color name="colour_red_ca_261_a">#ca261a</color>
+    <color name="colour_red_d_55148">#d55148</color>
+    <color name="colour_red_f_9_e_9_e_8">#f9e9e8</color>
+    <color name="colour_blue_9_bc_2_e_8">#9bc2e8</color>
+    <color name="colour_blue_0467_c_6">#0467c6</color>
+    <color name="colour_blue_3685_d_1">#3685d1</color>
+    <color name="colour_blue_e_5_eff_9">#e5eff9</color>
+    <color name="colour_blue_044990">#004990</color>
+    <color name="colour_dark_grey_111111">#111111</color>
+    <color name="colour_dark_grey_333333">#333333</color>
+    <color name="colour_dark_grey_666666">#666666</color>
+    <color name="colour_dark_grey_cbcbcb">#cbcbcb</color>
+    <color name="colour_light_grey_d_9_d_9_d_9">#d9d9d9</color>
+    <color name="colour_light_grey_e_5_e_5_e_5">#e5e5e5</color>
+    <color name="colour_light_grey_f_0_f_0_f_0">#f0f0f0</color>
+    <color name="colour_white_ffffff">#ffffff</color>
+    <color name="colour_green_098_a_00">#098a00</color>
+    <color name="colour_green_6_bb_966">#6bb966</color>
+    <color name="colour_green_9_dd_099">#9dd099</color>
+    <color name="colour_green_e_6_f_3_e_5">#e6f3e5</color>
+    <color name="colour_yellow_ffbf_05">#ffbf05</color>
+    <color name="colour_yellow_ffcc_37">#ffcc37</color>
+    <color name="colour_yellow_ffefc_0">#ffefc0</color>
 </resources>
