@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.amazonaws.appsync'
 
 android {
     compileSdkVersion 29
@@ -98,6 +99,10 @@ dependencies {
 
     def material_version = "1.1.0-alpha09"
     implementation "com.google.android.material:material:$material_version"
+
+    implementation 'com.amazonaws:aws-android-sdk-appsync:2.9.+'
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
 
 
     def androidx_test_version = "1.2.0"
