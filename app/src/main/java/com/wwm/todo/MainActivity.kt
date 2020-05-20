@@ -2,11 +2,9 @@ package com.wwm.todo
 
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -38,8 +36,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun logout() {
-        val intent = Intent(this, Auth0LoginActivity::class.java)
-        intent.putExtra(Auth0LoginActivity.EXTRA_CLEAR_CREDENTIALS, true)
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.putExtra(LoginActivity.EXTRA_CLEAR_CREDENTIALS, true)
         startActivity(intent)
         finish()
     }

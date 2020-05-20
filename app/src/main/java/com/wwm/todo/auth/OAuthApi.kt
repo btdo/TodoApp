@@ -10,18 +10,23 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.*
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.Headers
+import retrofit2.http.POST
 
 interface OAuthApi {
     @FormUrlEncoded
     @POST("/mga/sps/oauth/oauth20/token")
     @Headers("Content-Type: application/x-www-form-urlencoded")
     fun login(@Field("username") username: String,
-                      @Field("password") password: String,
-                      @Field("grant_type") type: String = "password",
-                      @Field("client_secret") clientSecret: String = BuildConfig.OAUTH_CLIENT_SECRET,
-                      @Field("client_id") clientId: String = BuildConfig.OAUTH_CLIENT_ID)
-            : Deferred<LoginResponse>
+              @Field("password") password: String,
+              @Field("grant_type") type: String = "password",
+              @Field("client_secret") clientSecret: String = BuildConfig.OAUTH_CLIENT_SECRET,
+              @Field("client_id") clientId: String = BuildConfig.OAUTH_CLIENT_ID,
+              @Field("scope") scope: String = "openid"
+    )
+            : Deferred<Response<LoginResponse>>
 
     @FormUrlEncoded
     @POST("/mga/sps/oauth/oauth20/token")
@@ -29,7 +34,7 @@ interface OAuthApi {
                              @Field("grant_type") type: String = "refresh_token",
                              @Field("client_secret") clientSecret: String = BuildConfig.OAUTH_CLIENT_SECRET,
                              @Field("client_id") clientId: String = BuildConfig.OAUTH_CLIENT_ID)
-            : Deferred<LoginResponse>
+            : Deferred<Response<LoginResponse>>
 }
 
 private val retrofit = setupRetrofit(BuildConfig.OAUTH_ROOT)

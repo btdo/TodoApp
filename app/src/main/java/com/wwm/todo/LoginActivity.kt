@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import com.auth0.android.Auth0
 import com.auth0.android.Auth0Exception
 import com.auth0.android.authentication.AuthenticationException
@@ -21,14 +20,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class Auth0LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     private lateinit var auth0: Auth0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         val loginButton =
             findViewById<Button>(R.id.loginButton)
-        loginButton.setOnClickListener { login() }
+        loginButton.setOnClickListener {
+            // login()
+            cpcLogin()
+        }
+
         auth0 = Auth0(this)
         auth0.isOIDCConformant = true
 
@@ -41,7 +44,7 @@ class Auth0LoginActivity : AppCompatActivity() {
     }
 
     private fun cpcLogin() {
-        lifecycleScope.launch{
+        lifecycleScope.launch(Dispatchers.Main) {
             AuthenticationServiceImpl.login("sbstg2napp", "Happy123!")
             Timber.d("${AuthenticationServiceImpl.accessToken} ${AuthenticationServiceImpl.refreshToken}")
             goToMainActivity(AuthenticationServiceImpl.accessToken!!)
@@ -65,7 +68,7 @@ class Auth0LoginActivity : AppCompatActivity() {
                 override fun onFailure(exception: AuthenticationException) {
                     runOnUiThread {
                         Toast.makeText(
-                            this@Auth0LoginActivity,
+                            this@LoginActivity,
                             "Error: " + exception.message,
                             Toast.LENGTH_SHORT
                         ).show()
@@ -83,7 +86,7 @@ class Auth0LoginActivity : AppCompatActivity() {
 
     private fun goToMainActivity(accessToken: String){
         val intent =
-            Intent(this@Auth0LoginActivity, MainActivity::class.java)
+            Intent(this@LoginActivity, MainActivity::class.java)
         intent.putExtra(
             EXTRA_ACCESS_TOKEN,
             accessToken
@@ -93,7 +96,7 @@ class Auth0LoginActivity : AppCompatActivity() {
     }
 
     private fun logout() {
-        WebAuthProvider.logout(auth0!!)
+        WebAuthProvider.logout(auth0)
             .withScheme("demo")
             .start(this, object : VoidCallback {
                 override fun onSuccess(payload: Void) {}
@@ -105,7 +108,7 @@ class Auth0LoginActivity : AppCompatActivity() {
     }
 
     private fun showNextActivity() {
-        val intent = Intent(this@Auth0LoginActivity, MainActivity::class.java)
+        val intent = Intent(this@LoginActivity, MainActivity::class.java)
         startActivity(intent)
         finish()
     }

@@ -57,8 +57,8 @@ object AuthenticationServiceImpl :
     override suspend fun login(username: String, password: String) = withContext(Dispatchers.IO){
         logout()
         try {
-            val response = OAuthApiFactory.oAuthApi.login(username, password)
-            handleLoginResponse(response.await())
+            val response = OAuthApiFactory.oAuthApi.login(username, password).await()
+            handleLoginResponse(response.body()!!)
         } catch (e: Exception){
             Timber.e(e)
         }
@@ -85,6 +85,7 @@ object AuthenticationServiceImpl :
             it.timeStamp = Date().time
             accessToken = it.access_token
             refreshToken = it.refresh_token
+            idToken = it.id_token
         }
         val newLoginState = oAuthResponse?.refresh_token != null
         if (_loggedIn.value != newLoginState) {
