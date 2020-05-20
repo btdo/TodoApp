@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val application = requireActivity().application
-        val viewModelFactory = HomeFragmentViewModelFactory(application)
+        val viewModelFactory = HomeFragmentViewModelFactory()
         binding = FragmentHomeBinding.inflate(inflater)
         binding.lifecycleOwner = this
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeFragmentViewModel::class.java)
