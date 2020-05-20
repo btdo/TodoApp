@@ -9,4 +9,11 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="com_auth0_client_id">vJ6zbi0SdsiJ52seWwDf0T0N6xjfYfm6</string>
+    <string name="com_auth0_domain">dev-bidfloq8.auth0.com</string>
+
+    <string name="login">Log in</string>
+    <string name="logout">Log out</string>
+
 </resources>

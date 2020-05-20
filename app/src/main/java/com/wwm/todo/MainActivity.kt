@@ -1,5 +1,6 @@
 package com.wwm.todo
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -16,8 +17,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            logout()
         }
     }
 
@@ -35,5 +35,12 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun logout() {
+        val intent = Intent(this, Auth0LoginActivity::class.java)
+        intent.putExtra(Auth0LoginActivity.EXTRA_CLEAR_CREDENTIALS, true)
+        startActivity(intent)
+        finish()
     }
 }

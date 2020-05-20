@@ -44,9 +44,9 @@ class HomeFragment : Fragment() {
         binding.itemList.adapter =  adapter
         // Inflate the layout for this fragment
 
-
         mAWSAppSyncClient = AWSAppSyncClient.builder()
             .context(requireContext())
+            .oidcAuthProvider { "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllvQXA3WmR5YktDT3NJa2JxYnlwZyJ9.eyJpc3MiOiJodHRwczovL2Rldi1iaWRmbG9xOC5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWVjMGFiYmQ0MGZhNTYwYzc1NjMxMTQxIiwiYXVkIjoidko2emJpMFNkc2lKNTJzZVd3RGYwVDBONnhqZllmbTYiLCJpYXQiOjE1ODk5MzYwNzQsImV4cCI6MTU4OTk3MjA3NCwibm9uY2UiOiJmVnlncEduWXU5TUxpX0ViaXlkVmtVWFlaNGYybVRsTG5FdVZQLTZFUlpJIn0.W-ItRKPJef8DU-UsYwNQ3eZQpdsz4C7316gzM_dbPMAydYSUDe3T54uI68zfp91IdccABHBuXFVist9beXQoixUWG0FzII2mCeyX7ZgIZYjHxQ5I2oQMxH46sKaDlvmS-EtelVOqdNMwEVzstW5Fs7FolIp9Hi555IXcsD5k77yeZ2TAX6dLjm-Z53vXYdfnyoYbobcSsX6kj0fthSCh6pV5QuqxcM-p224YDmDzIhBgTihrRjP5TsgmCVJaWDkeQx5RrRq3bqXCoF8-bBjymhw5IFPpkBxsngCsVn-gYwtnSKWxo3N5o1ouhjThCGc_j0yIQnzBSM_By8eIdiTuYQ"}
             .awsConfiguration( AWSConfiguration(requireContext()))
             // If you are using complex objects (S3) then uncomment
             //.s3ObjectManager(new S3ObjectManagerImplementation(new AmazonS3Client(AWSMobileClient.getInstance())))

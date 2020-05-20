@@ -15,8 +15,13 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "OAUTH_ROOT", '"https://stg002-sso.epost.ca"'
+        buildConfigField "String", "OAUTH_CLIENT_SECRET", '"hIXjhoi20cZZjtBPw7tn"'
+        buildConfigField "String", "OAUTH_CLIENT_ID", '"cpc-ROPC-mobile"'
+        buildConfigField "String", "EPOST_ROOT", '"https://stg002-www.epost.ca"'
+
+        manifestPlaceholders = [auth0Domain: "@string/com_auth0_domain", auth0Scheme: "demo"]
     }
 
     buildTypes {
@@ -44,6 +49,7 @@ android {
     }
 
 }
+def jackson_version = "2.5.3"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -100,10 +106,17 @@ dependencies {
     def material_version = "1.1.0-alpha09"
     implementation "com.google.android.material:material:$material_version"
 
+    // AppSync
     implementation 'com.amazonaws:aws-android-sdk-appsync:2.9.+'
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
 
+    //Auth0
+    implementation 'com.auth0.android:auth0:1.+'
+
+    implementation "com.fasterxml.jackson.core:jackson-core:${jackson_version}"
+    implementation "com.fasterxml.jackson.core:jackson-annotations:${jackson_version}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jackson_version}"
 
     def androidx_test_version = "1.2.0"
     testImplementation 'junit:junit:4.12'
