@@ -1,12 +1,8 @@
 package com.wwm.todo
 
-import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import com.amazonaws.amplify.generated.graphql.ListTasksQuery
-import com.amazonaws.mobile.config.AWSConfiguration
-import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient
-import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers
 import com.apollographql.apollo.GraphQLCall
 import com.apollographql.apollo.exception.ApolloException
 import com.wwm.todo.auth.AuthenticationServiceImpl
