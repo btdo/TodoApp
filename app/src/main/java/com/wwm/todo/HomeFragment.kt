@@ -126,13 +126,42 @@ class HomeFragment : Fragment() {
             }
         }
 
-
-
     fun query() {
         mAWSAppSyncClient.query(ListTasksQuery.builder().build())
-            .responseFetcher(AppSyncResponseFetchers.CACHE_AND_NETWORK)
-            .enqueue(viewModel.listCallback)
+            .responseFetcher(AppSyncResponseFetchers.NETWORK_FIRST)
+            .enqueue(listCallback)
     }
+
+    val listCallback: GraphQLCall.Callback<ListTasksQuery.Data> =
+        object : GraphQLCall.Callback<ListTasksQuery.Data>() {
+            override fun onResponse(response: com.apollographql.apollo.api.Response<ListTasksQuery.Data>) {
+                Log.i("Results", response.data()?.listTasks()?.items().toString())
+                val list = mutableListOf<TaskItem>()
+                response.data()?.listTasks()?.items().let {
+                    it?.forEach {
+                        val deleted = it._deleted() ?: false
+                        if (!deleted) {
+                            val item = TaskItem(
+                                it.id(),
+                                it.title(),
+                                it.description(),
+                                it.status(),
+                                it._version(),
+                                it._deleted()
+                            )
+                            list.add(item)
+                        }
+                    }
+                }
+
+                viewModel.onUpdatedList(list)
+            }
+
+            override fun onFailure(@Nonnull e: ApolloException) {
+                Log.e("ERROR", e.toString())
+            }
+        }
+
 
     override fun onResume() {
         super.onResume()
