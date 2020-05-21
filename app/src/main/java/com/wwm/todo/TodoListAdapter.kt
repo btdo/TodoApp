@@ -8,13 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wwm.todo.databinding.ItemTodoBinding
 
 class TodoListAdapter(
-    private var mClickListener: ItemClickedListener
+    private var mClickListener: ItemClickedListener,
+    private var itemDeleteListener: ItemDeleteListener
 ) :
     ListAdapter<TaskItem, TodoListAdapter.ItemViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
-            ItemTodoBinding.inflate(LayoutInflater.from(parent.context))
+            ItemTodoBinding.inflate(LayoutInflater.from(parent.context)), itemDeleteListener
         )
     }
 
@@ -43,17 +44,22 @@ class TodoListAdapter(
     }
 
     class ItemViewHolder(
-        private var binding: ItemTodoBinding
+        private var binding: ItemTodoBinding, private var deleteListener: ItemDeleteListener
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: TaskItem) {
             binding.item = item
+            binding.itemDelete.setOnClickListener { deleteListener.onClick(item) }
             binding.executePendingBindings()
         }
     }
 }
 
 class ItemClickedListener(val clickListener: (day: TaskItem) -> Unit) {
+    fun onClick(item: TaskItem) = clickListener(item)
+}
+
+class ItemDeleteListener(val clickListener: (day: TaskItem) -> Unit) {
     fun onClick(item: TaskItem) = clickListener(item)
 }
