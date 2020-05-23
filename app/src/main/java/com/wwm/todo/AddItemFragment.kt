@@ -17,7 +17,6 @@ import com.amazonaws.amplify.generated.graphql.CreateTaskMutation
 import com.amazonaws.amplify.generated.graphql.ListTasksQuery
 import com.amazonaws.mobile.config.AWSConfiguration
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient
-import com.amazonaws.mobileconnectors.appsync.ClearCacheOptions
 import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers
 import com.apollographql.apollo.GraphQLCall
 import com.apollographql.apollo.api.Response
@@ -76,9 +75,8 @@ class AddItemFragment : Fragment() {
                 mAWSAppSyncClient.mutate(addTask).enqueue(createMutationCallback)
             } else {
                 mAWSAppSyncClient.mutate(addTask).enqueue(createMutationCallbackOffline)
+                optimisticWrite(input)
             }
-
-            optimisticWrite(input)
         }
     }
 
@@ -102,15 +100,6 @@ class AddItemFragment : Fragment() {
                 Timber.e(e, "Error creating tasks")
             }
 
-            override fun onStatusEvent(event: GraphQLCall.StatusEvent) {
-                super.onStatusEvent(event)
-                if (!isConnectedToInternet()) {
-                    // Need to do this to avoid duplicates
-                    mAWSAppSyncClient.clearCaches(
-                        ClearCacheOptions.builder().clearMutations().build()
-                    )
-                }
-            }
         }
 
     private fun optimisticWrite(createTodoInput: CreateTaskInput) {
@@ -175,10 +164,8 @@ class AddItemFragment : Fragment() {
 
     private fun finishIfOffline() {
         // Close the add activity when offline otherwise allow callback to close
-        if (!isConnectedToInternet()) {
-            hideKeyboard()
-            findNavController().navigate(R.id.action_AddItemFragment_to_HomeFragment)
-        }
+        hideKeyboard()
+        findNavController().navigate(R.id.action_AddItemFragment_to_HomeFragment)
     }
 
     fun isConnectedToInternet(): Boolean {

@@ -128,7 +128,7 @@ class HomeFragment : Fragment() {
 
     fun query() {
         mAWSAppSyncClient.query(ListTasksQuery.builder().build())
-            .responseFetcher(AppSyncResponseFetchers.NETWORK_FIRST)
+            .responseFetcher(AppSyncResponseFetchers.CACHE_AND_NETWORK)
             .enqueue(listCallback)
     }
 
