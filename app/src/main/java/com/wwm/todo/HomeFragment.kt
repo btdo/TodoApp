@@ -13,14 +13,12 @@ import com.amazonaws.amplify.generated.graphql.DeleteTaskMutation
 import com.amazonaws.amplify.generated.graphql.ListTasksQuery
 import com.amazonaws.amplify.generated.graphql.OnCreateTaskSubscription
 import com.amazonaws.amplify.generated.graphql.OnDeleteTaskSubscription
-import com.amazonaws.mobile.config.AWSConfiguration
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient
 import com.amazonaws.mobileconnectors.appsync.AppSyncSubscriptionCall
 import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers
 import com.apollographql.apollo.GraphQLCall
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.exception.ApolloException
-import com.wwm.todo.auth.AuthenticationServiceImpl
 import com.wwm.todo.databinding.FragmentHomeBinding
 import timber.log.Timber
 import type.DeleteTaskInput
@@ -52,14 +50,7 @@ class HomeFragment : Fragment() {
         binding.itemList.adapter =  adapter
         // Inflate the layout for this fragment
 
-        mAWSAppSyncClient = AWSAppSyncClient.builder()
-            .context(requireActivity())
-            .oidcAuthProvider { AuthenticationServiceImpl.idToken }
-            .awsConfiguration( AWSConfiguration(requireContext()))
-            // If you are using complex objects (S3) then uncomment
-            //.s3ObjectManager(new S3ObjectManagerImplementation(new AmazonS3Client(AWSMobileClient.getInstance())))
-            .build()
-
+        mAWSAppSyncClient = ClientFactory.getInstance(requireContext())
         return binding.root
     }
 

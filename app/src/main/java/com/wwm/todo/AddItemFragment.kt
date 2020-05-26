@@ -16,13 +16,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.amazonaws.amplify.generated.graphql.CreateTaskMutation
 import com.amazonaws.amplify.generated.graphql.ListTasksQuery
-import com.amazonaws.mobile.config.AWSConfiguration
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient
 import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers
 import com.apollographql.apollo.GraphQLCall
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.exception.ApolloException
-import com.wwm.todo.auth.AuthenticationServiceImpl
 import com.wwm.todo.databinding.FragmentAddItemBinding
 import timber.log.Timber
 import type.CreateTaskInput
@@ -51,13 +49,7 @@ class AddItemFragment : Fragment() {
         binding.viewModel = viewModel
         // Inflate the layout for this fragment
 
-        mAWSAppSyncClient = AWSAppSyncClient.builder()
-            .context(requireContext())
-            .oidcAuthProvider { AuthenticationServiceImpl.idToken }
-            .awsConfiguration(AWSConfiguration(requireContext()))
-            // If you are using complex objects (S3) then uncomment
-            //.s3ObjectManager(new S3ObjectManagerImplementation(new AmazonS3Client(AWSMobileClient.getInstance())))
-            .build()
+        mAWSAppSyncClient = ClientFactory.getInstance(requireContext())
 
         return binding.root
     }
