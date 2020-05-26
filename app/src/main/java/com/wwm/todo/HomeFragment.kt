@@ -22,6 +22,7 @@ import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.exception.ApolloException
 import com.wwm.todo.auth.AuthenticationServiceImpl
 import com.wwm.todo.databinding.FragmentHomeBinding
+import timber.log.Timber
 import type.DeleteTaskInput
 import javax.annotation.Nonnull
 
@@ -77,7 +78,7 @@ class HomeFragment : Fragment() {
         onCreateSubscriptionWatcher.execute(onCreateSubscriptionCallback)
     }
 
-    val onCreateSubscriptionCallback: AppSyncSubscriptionCall.Callback<OnCreateTaskSubscription.Data> =
+    private val onCreateSubscriptionCallback: AppSyncSubscriptionCall.Callback<OnCreateTaskSubscription.Data> =
         object : AppSyncSubscriptionCall.Callback<OnCreateTaskSubscription.Data> {
             override fun onResponse(response: Response<OnCreateTaskSubscription.Data?>) {
                 Log.i("Subscription", response.data().toString())
@@ -134,31 +135,13 @@ class HomeFragment : Fragment() {
 
     val listCallback: GraphQLCall.Callback<ListTasksQuery.Data> =
         object : GraphQLCall.Callback<ListTasksQuery.Data>() {
-            override fun onResponse(response: com.apollographql.apollo.api.Response<ListTasksQuery.Data>) {
+            override fun onResponse(response: Response<ListTasksQuery.Data>) {
                 Log.i("Results", response.data()?.listTasks()?.items().toString())
-                val list = mutableListOf<TaskItem>()
-                response.data()?.listTasks()?.items().let {
-                    it?.forEach {
-                        val deleted = it._deleted() ?: false
-                        if (!deleted) {
-                            val item = TaskItem(
-                                it.id(),
-                                it.title(),
-                                it.description(),
-                                it.status(),
-                                it._version(),
-                                it._deleted()
-                            )
-                            list.add(item)
-                        }
-                    }
-                }
-
-                viewModel.onUpdatedList(list)
+                viewModel.onUpdatedList(response.data()?.listTasks()?.items()!!)
             }
 
             override fun onFailure(@Nonnull e: ApolloException) {
-                Log.e("ERROR", e.toString())
+                Timber.e(e, "ERROR")
             }
         }
 
@@ -179,9 +162,7 @@ class HomeFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        onCreateSubscriptionWatcher.let {
-            it.cancel()
-        }
+        onCreateSubscriptionWatcher.cancel()
         onDeleteTaskSubscriptionWatcher.let {
             it.cancel()
         }

@@ -1,24 +1,22 @@
 package com.wwm.todo
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.amazonaws.amplify.generated.graphql.ListTasksQuery
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 
 @ExperimentalCoroutinesApi
 class HomeFragmentViewModel : ViewModel() {
 
-    private val _todoList = MutableLiveData<List<TaskItem>>()
-    val todoList: LiveData<List<TaskItem>>
-        get() = _todoList
+    val todoList: LiveData<List<TaskItem>> = TodoRepository.todoList
 
     init {
     }
 
-    fun onUpdatedList(list: List<TaskItem>) {
-        _todoList.postValue(list)
+    fun onUpdatedList(list: List<ListTasksQuery.Item>) {
+        TodoRepository.setTodoList(list)
     }
 }
 

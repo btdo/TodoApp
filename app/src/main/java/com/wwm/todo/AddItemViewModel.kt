@@ -1,12 +1,19 @@
 package com.wwm.todo
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.amazonaws.amplify.generated.graphql.ListTasksQuery
 
 class AddItemViewModel(application: Application) : AndroidViewModel(application)  {
 
     fun addTask(task: TaskItem){
 
+    }
+
+    fun onUpdatedList(list: List<ListTasksQuery.Item>) {
+        TodoRepository.setTodoList(list)
     }
 }
 

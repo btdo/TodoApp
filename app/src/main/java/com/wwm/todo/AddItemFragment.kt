@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -65,8 +66,6 @@ class AddItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
-            // viewModel.addTask(TaskItem(null, binding.titleInput.text.toString(),  binding.descriptionInput.text.toString(),"NOT DONE"))
-
             val input = CreateTaskInput.builder().title(binding.titleInput.text.toString())
                 .description(binding.descriptionInput.text.toString()).build()
 
@@ -74,8 +73,12 @@ class AddItemFragment : Fragment() {
             if (isConnectedToInternet()) {
                 mAWSAppSyncClient.mutate(addTask).enqueue(createMutationCallback)
             } else {
-                mAWSAppSyncClient.mutate(addTask).enqueue(createMutationCallbackOffline)
+                mAWSAppSyncClient.mutate(addTask).refetchQueries(ListTasksQuery.builder().build())
+                    .enqueue(createMutationCallbackOffline)
                 optimisticWrite(input)
+                Handler().postDelayed({
+                    onActionCompleted()
+                }, 50)
             }
         }
     }
@@ -83,8 +86,7 @@ class AddItemFragment : Fragment() {
     val createMutationCallback: GraphQLCall.Callback<CreateTaskMutation.Data> =
         object : GraphQLCall.Callback<CreateTaskMutation.Data>() {
             override fun onResponse(@Nonnull response: Response<CreateTaskMutation.Data>) {
-                hideKeyboard()
-                findNavController().navigate(R.id.action_AddItemFragment_to_HomeFragment)
+                onActionCompleted()
             }
 
             override fun onFailure(@Nonnull e: ApolloException) {
@@ -94,7 +96,23 @@ class AddItemFragment : Fragment() {
 
     val createMutationCallbackOffline: GraphQLCall.Callback<CreateTaskMutation.Data> =
         object : GraphQLCall.Callback<CreateTaskMutation.Data>() {
-            override fun onResponse(@Nonnull response: Response<CreateTaskMutation.Data>) {}
+            override fun onResponse(@Nonnull response: Response<CreateTaskMutation.Data>) {
+                val listTasksQuery = ListTasksQuery.builder().build()
+                mAWSAppSyncClient.query(listTasksQuery)
+                    .responseFetcher(AppSyncResponseFetchers.NETWORK_ONLY)
+                    .enqueue(object : GraphQLCall.Callback<ListTasksQuery.Data>() {
+                        override fun onResponse(response: com.apollographql.apollo.api.Response<ListTasksQuery.Data>) {
+                            response.data()?.listTasks()?.items().let {
+                                TodoRepository.setTodoList(it!!)
+                            }
+                        }
+
+                        override fun onFailure(@Nonnull e: ApolloException) {
+                            Log.e("ERROR", e.toString())
+                        }
+                    })
+
+            }
 
             override fun onFailure(@Nonnull e: ApolloException) {
                 Timber.e(e, "Error creating tasks")
@@ -110,7 +128,7 @@ class AddItemFragment : Fragment() {
             createTodoInput.description(),
             null,
             1,
-            false,
+            null,
             System.currentTimeMillis()
         )
 
@@ -153,7 +171,6 @@ class AddItemFragment : Fragment() {
                             data
                         ).enqueue(null)
                     // Successful writing to local store
-                    finishIfOffline()
                 }
 
                 override fun onFailure(@Nonnull e: ApolloException) {
@@ -162,7 +179,7 @@ class AddItemFragment : Fragment() {
             })
     }
 
-    private fun finishIfOffline() {
+    private fun onActionCompleted() {
         // Close the add activity when offline otherwise allow callback to close
         hideKeyboard()
         findNavController().navigate(R.id.action_AddItemFragment_to_HomeFragment)
