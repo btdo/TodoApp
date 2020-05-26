@@ -89,21 +89,6 @@ class AddItemFragment : Fragment() {
     val createMutationCallbackOffline: GraphQLCall.Callback<CreateTaskMutation.Data> =
         object : GraphQLCall.Callback<CreateTaskMutation.Data>() {
             override fun onResponse(@Nonnull response: Response<CreateTaskMutation.Data>) {
-                val listTasksQuery = ListTasksQuery.builder().build()
-                mAWSAppSyncClient.query(listTasksQuery)
-                    .responseFetcher(AppSyncResponseFetchers.NETWORK_ONLY)
-                    .enqueue(object : GraphQLCall.Callback<ListTasksQuery.Data>() {
-                        override fun onResponse(response: com.apollographql.apollo.api.Response<ListTasksQuery.Data>) {
-                            response.data()?.listTasks()?.items().let {
-                                TodoRepository.setTodoList(it!!)
-                            }
-                        }
-
-                        override fun onFailure(@Nonnull e: ApolloException) {
-                            Log.e("ERROR", e.toString())
-                        }
-                    })
-
             }
 
             override fun onFailure(@Nonnull e: ApolloException) {
